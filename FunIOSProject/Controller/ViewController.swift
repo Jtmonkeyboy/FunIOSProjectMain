@@ -24,9 +24,26 @@ class ViewController: UIViewController
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
+    var oldNumber : Int = 7
+    var isValid = false
+    
     @IBAction func complimentClick(_ sender: Any)-> Void
     {
+        randomNumber = Int(arc4random() % 5)
+        isValid = false
+        while(!isValid)
+        {
+            if(randomNumber == oldNumber)
+            {
+                randomNumber = Int(arc4random() % 5)
+            }
+            else
+            {
+                oldNumber = randomNumber
+                isValid = true
+            }
+        }
         if(randomNumber == 1)
         {
             iLoveYou.isHidden = false
@@ -59,7 +76,7 @@ class ViewController: UIViewController
             incredible.isHidden = true
             beautiful.isHidden = true
         }
-        randomNumber = Int(arc4random() % 5)
+        
     }
     
 }
